@@ -4,5 +4,5 @@ export default {
   black: '#0A0827',
   white: '#FFFFFF',
   lightblue: '#3471CD',
-  silver: '#E5E5E5',
+  silver: '#F6F8FF',
 };

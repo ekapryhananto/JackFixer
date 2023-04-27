@@ -4,6 +4,7 @@ import Transaction from './screen/Transaction';
 import Profil from './screen/Profil';
 import Home from './screen/Home';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
+import {COLORS} from './constant';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -23,7 +24,7 @@ const BottomNav = () => {
           } else if (route.name === 'Profil') {
             iconName = focused ? 'person' : 'person-outline';
           }
-          return <Icon name={iconName} size={22} color={color} />;
+          return <Icon name={iconName} size={22} color={COLORS.primary} />;
         },
       })}>
       <Tab.Screen name="Home" component={Home} />

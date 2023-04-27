@@ -71,7 +71,12 @@ const Home = ({navigation}) => {
                 }}>
                 {item.title}
               </Text>
-              <Text style={{paddingTop: 5}}> {item.address}</Text>
+              <Text
+                numberOfLines={1}
+                ellipsizeMode="tail"
+                style={{paddingTop: 5}}>
+                {item.address}
+              </Text>
               <View
                 style={{
                   marginTop: 10,
@@ -106,6 +111,7 @@ const Home = ({navigation}) => {
               size={25}
               color="black"
               style={styles.iconKeranjang}
+              onPress={() => navigation.navigate('Keranjang')}
             />
           </View>
           <Text style={{color: COLORS.darkblue, fontSize: 15}}>
