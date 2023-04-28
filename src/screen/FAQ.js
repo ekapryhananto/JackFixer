@@ -1,9 +1,37 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
-import {COLORS} from '../constant';
+import {
+  FlatList,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, {useState} from 'react';
+import {COLORS, DATAFAQ} from '../constant';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 
 const FAQ = ({navigation}) => {
+  const DataFAQ = ({item}) => {
+    const [showAnswer, setShowAnswer] = useState(false);
+    return (
+      <View style={styles.faq}>
+        <View style={{flexDirection: 'row'}}>
+          <Text style={{color: COLORS.black, fontSize: 18, fontWeight: '500'}}>
+            {item.question}
+          </Text>
+          <TouchableOpacity onPress={() => setShowAnswer(!showAnswer)}>
+            <Icon name="chevron-down" size={22} color={COLORS.black} />
+          </TouchableOpacity>
+        </View>
+        {showAnswer && (
+          <View style={{paddingVertical: 10}}>
+            <Text style={{fontSize: 18, fontWeight: '500'}}>{item.answer}</Text>
+          </View>
+        )}
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -25,7 +53,12 @@ const FAQ = ({navigation}) => {
       </View>
       <ScrollView
         contentContainerStyle={{paddingBottom: 20}}
-        showsVerticalScrollIndicator={false}></ScrollView>
+        showsVerticalScrollIndicator={false}>
+        <FlatList
+          data={DATAFAQ}
+          renderItem={({item}) => <DataFAQ item={item} />}
+        />
+      </ScrollView>
     </View>
   );
 };
@@ -51,5 +84,11 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     elevation: 5,
+  },
+  faq: {
+    backgroundColor: COLORS.white,
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    margin: 10,
   },
 });

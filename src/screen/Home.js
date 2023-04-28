@@ -15,17 +15,6 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 import {COLORS, DATA} from '../constant';
 
-const Warna = () => {
-  let colors;
-
-  if (DATA.status === 'TUTUP') {
-    colors = 'red';
-  } else if (DATA.status === 'BUKA') {
-    colors = 'green';
-  }
-  return colors;
-};
-
 const Home = ({navigation}) => {
   const [showModal, setShowModal] = useState(false);
 
@@ -80,13 +69,20 @@ const Home = ({navigation}) => {
               <View
                 style={{
                   marginTop: 10,
-                  backgroundColor: '#E64C3C33',
+                  backgroundColor:
+                    item.status == 'BUKA' ? '#11A84E1F' : '#E64C3C33',
                   width: 58,
                   height: 21,
                   borderRadius: 20,
                   alignItems: 'center',
                 }}>
-                <Text style={{fontWeight: 'bold'}}>{item.status}</Text>
+                <Text
+                  style={{
+                    fontWeight: 'bold',
+                    color: item.status == 'BUKA' ? '#11A84E' : '#EA3D3D',
+                  }}>
+                  {item.status}
+                </Text>
               </View>
             </View>
           </View>
